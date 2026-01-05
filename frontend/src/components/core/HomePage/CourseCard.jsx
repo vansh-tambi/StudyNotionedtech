@@ -10,7 +10,7 @@ const CourseCard = ({cardData, currentCard, setCurrentCard}) => {
     <motion.div
       whileHover={{ y: -10, scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className={`w-full sm:w-[360px] lg:w-[30%] ${
+      className={`w-[280px] sm:w-[320px] md:w-[340px] lg:w-[360px] ${
         currentCard === cardData?.heading
           ? "bg-white shadow-[12px_12px_0_0] shadow-yellow-50"
           : "bg-richblack-800"

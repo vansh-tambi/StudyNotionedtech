@@ -78,7 +78,7 @@ const ExploreMore = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, staggerChildren: 0.1 }}
-        className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 lg:gap-10 w-11/12 mx-auto py-10"
+        className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 w-full max-w-7xl mx-auto px-4 py-10"
       >
         {courses.map((ele, index) => {
           return (
