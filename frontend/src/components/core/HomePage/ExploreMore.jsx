@@ -70,7 +70,7 @@ const ExploreMore = () => {
           );
         })}
       </motion.div>
-      <div className="lg:h-[200px] h-[50px]"></div>
+      <div className="hidden lg:h-[50px]"></div>
 
       {/* Cards Group */}
       <motion.div 
@@ -78,7 +78,7 @@ const ExploreMore = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, staggerChildren: 0.1 }}
-        className="lg:absolute gap-6 sm:gap-10 justify-center lg:gap-0 flex lg:justify-between flex-wrap w-full lg:bottom-[0] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[50%] text-black lg:mb-0 mb-7 lg:px-0 px-3"
+        className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 lg:gap-10 w-11/12 mx-auto py-10"
       >
         {courses.map((ele, index) => {
           return (
