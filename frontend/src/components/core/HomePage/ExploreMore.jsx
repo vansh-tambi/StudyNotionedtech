@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {motion} from 'framer-motion';
 import { HomePageExplore } from "../../../data/homepage-explore";
 import CourseCard from "./CourseCard";
 import HighlightText from "./HighlightText";
@@ -28,49 +29,75 @@ const ExploreMore = () => {
   return (
     <div>
       {/* Explore more section */}
-      <div>
-        <div className="text-4xl font-semibold text-center my-10">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center my-10 px-4">
           Unlock the
           <HighlightText text={"Power of Code"} />
-          <p className="text-center text-richblack-300 text-lg font-semibold mt-1">
+          <p className="text-center text-richblack-300 text-base sm:text-lg font-semibold mt-1">
             Learn to Build Anything You Can Imagine
           </p>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Tabs Section */}
-      <div className="hidden lg:flex gap-5 -mt-5 mx-auto w-max bg-richblack-800 text-richblack-200 p-1 rounded-full font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">
+      {/* Tabs Section - Mobile Responsive */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-wrap justify-center lg:flex-nowrap gap-2 sm:gap-5 -mt-5 mx-auto w-full max-w-[95%] lg:w-max bg-richblack-800 text-richblack-200 p-1 rounded-full font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]"
+      >
         {tabsName.map((ele, index) => {
           return (
-            <div
-              className={` text-[16px] flex flex-row items-center gap-2 ${
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`text-[12px] sm:text-[14px] lg:text-[16px] flex flex-row items-center gap-2 ${
                 currentTab === ele
                   ? "bg-richblack-900 text-richblack-5 font-medium"
                   : "text-richblack-200"
-              } px-7 py-[7px] rounded-full transition-all duration-200 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5`}
+              } px-3 sm:px-5 lg:px-7 py-[5px] lg:py-[7px] rounded-full transition-all duration-200 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5`}
               key={index}
               onClick={() => setMyCards(ele)}
             >
               {ele}
-            </div>
+            </motion.div>
           );
         })}
-      </div>
-      <div className="hidden lg:block lg:h-[200px]"></div>
+      </motion.div>
+      <div className="lg:h-[200px] h-[50px]"></div>
 
       {/* Cards Group */}
-      <div className="lg:absolute gap-10 justify-center lg:gap-0 flex lg:justify-between flex-wrap w-full lg:bottom-[0] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[50%] text-black lg:mb-0 mb-7 lg:px-0 px-3">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, staggerChildren: 0.1 }}
+        className="lg:absolute gap-6 sm:gap-10 justify-center lg:gap-0 flex lg:justify-between flex-wrap w-full lg:bottom-[0] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[50%] text-black lg:mb-0 mb-7 lg:px-0 px-3"
+      >
         {courses.map((ele, index) => {
           return (
-            <CourseCard
+            <motion.div
               key={index}
-              cardData={ele}
-              currentCard={currentCard}
-              setCurrentCard={setCurrentCard}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <CourseCard
+                cardData={ele}
+                currentCard={currentCard}
+                setCurrentCard={setCurrentCard}
+              />
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </div>
   );
 };

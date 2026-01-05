@@ -1,30 +1,42 @@
 import React from 'react'
+import {motion} from 'framer-motion'
 import { IconBtn } from './IconBtn'
 
 export const ConfirmationModal = ({modalData}) => {
   return (
-    <div className='absolute z-10 top-0 left-0 right-0 bottom-0 bg-richblack-900/30 backdrop-blur-md text-richblack-25 bg-opacity-90 p-4 rounded-lg'>
-
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className='fixed inset-0 z-[1000] grid place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm'
+    >
         {/* Modal container */}
-        <div className='absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-richblack-500/20 p-8 rounded-lg flex flex-col gap-8'>
-            <div className='flex flex-col gap-2'>
-                <p>{modalData.text1}</p>
-                <p>{modalData.text2}</p>
+        <motion.div 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          transition={{ type: "spring", duration: 0.3 }}
+          className='w-11/12 max-w-[350px] rounded-lg border border-richblack-400 bg-richblack-800 p-6'
+        >
+            <div className='flex flex-col gap-4'>
+                <p className='text-2xl font-semibold text-richblack-5'>{modalData.text1}</p>
+                <p className='text-richblack-200'>{modalData.text2}</p>
             </div>
 
-            <div className='flex space-x-8 font-semibold'>
+            <div className='flex items-center gap-x-4 mt-6'>
                 <IconBtn
                     onClick={modalData?.btn1Handler}
                     text={modalData.btn1Text}
-                    customClasses={'bg-[#D11A2A] text-white'}
+                    customClasses={'bg-yellow-50 text-richblack-900'}
                 />
-                <IconBtn
+                <button
                     onClick={modalData?.btn2Handler}
-                    text={modalData.btn2Text}
-                    customClasses={'bg-[#0BDA51] text-richblack-900'}
-                />
+                    className='cursor-pointer rounded-md bg-richblack-200 py-[8px] px-[20px] font-semibold text-richblack-900'
+                >
+                    {modalData.btn2Text}
+                </button>
             </div>
-        </div>
-    </div>
+        </motion.div>
+    </motion.div>
   )
 }

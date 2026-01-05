@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {motion} from 'framer-motion'
 import * as Icons from 'react-icons/fa'
 
 export const IconBtn = ({
@@ -15,11 +15,15 @@ export const IconBtn = ({
     const Icon = Icons[iconName];
 
   return (
-    <button 
+    <motion.button 
+    whileHover={{ scale: disabled ? 1 : 0.95 }}
+    whileTap={{ scale: disabled ? 1 : 0.9 }}
+    transition={{ type: "spring", stiffness: 400, damping: 17 }}
     disabled={disabled}
     onClick={onClick}
     className={`${customClasses ? customClasses : 'bg-yellow-50 text-richblack-900 font-bold'} 
-        px-6 py-2 rounded-md hover:scale-95 transition-all duration-300`}
+        px-4 sm:px-6 py-2 rounded-md transition-all duration-300 text-sm sm:text-base
+        ${disabled ? 'opacity-50 cursor-not-allowed' : 'shadow-md hover:shadow-lg'}`}
     type={type}>
         {
             children ? 
@@ -31,12 +35,12 @@ export const IconBtn = ({
             </>) 
             : 
             (
-                <div className='flex items-center space-x-2'>
+                <div className='flex items-center justify-center space-x-2'>
                     <span>{text}</span>
                     {Icon && <Icon className='text-sm'/>}
                 </div>
             )
         }
-    </button>
+    </motion.button>
   )
 }

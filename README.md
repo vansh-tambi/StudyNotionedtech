@@ -52,6 +52,7 @@
 - **Tailwind CSS 4.0.14** - Utility-first CSS framework
 - **Redux Toolkit 2.6.1** - State management
 - **React Router DOM 7.4.0** - Client-side routing
+- **Framer Motion** - Animation library for smooth UI transitions
 - **React Hook Form 7.54.2** - Form handling and validation
 - **Chart.js 4.4.8** - Data visualization
 - **React Markdown 10.1.0** - Markdown rendering
@@ -311,6 +312,78 @@ StudyNotion is fully responsive and works seamlessly across:
 - Tablets
 - Mobile devices
 - All modern browsers (Chrome, Firefox, Safari, Edge)
+
+## ✨ Animations & UI Enhancements
+
+### Framer Motion Integration
+The application features smooth, professional animations powered by **Framer Motion** library:
+
+#### Enhanced Components:
+1. **Home Page** - Hero section with fade-in, slide animations, staggered button effects
+2. **Navigation** - Slide-down entrance, hover effects, rotating dropdown icons
+3. **Buttons** - Spring physics hover/tap animations (scale effects)
+4. **Code Blocks** - Viewport-triggered slide animations from left and right
+5. **Course Cards** - Lift-on-hover effects with staggered fade-in
+6. **Footer** - Animated social icons, link hover effects, staggered section loading
+7. **Modals** - Smooth backdrop and content entrance/exit animations
+
+#### Animation Patterns:
+- **Fade & Slide**: Smooth entrance animations with opacity and position changes
+- **Hover Effects**: Scale transformations with spring physics
+- **Viewport Triggers**: Animations activate when elements scroll into view
+- **Staggered Children**: Sequential animations for lists and groups
+
+#### Performance Optimizations:
+- GPU-accelerated transforms
+- Viewport-once animations to prevent re-triggering
+- Spring physics for natural motion
+- Lazy loading of animation states
+
+### Responsive Breakpoints:
+- **Mobile**: < 640px (sm)
+- **Tablet**: ≥ 640px (sm) to < 1024px
+- **Desktop**: ≥ 1024px (lg)
+- **Large Desktop**: ≥ 768px (md)
+
+All animations are optimized for mobile devices and respect user preferences for reduced motion.
+
+## 🧪 Testing Guide
+
+### Quick Start Testing
+1. Install dependencies: `cd frontend && npm install`
+2. Run dev server: `npm run dev`
+3. Open browser: `http://localhost:5173`
+
+### What to Test
+
+**Homepage Animations:**
+- Hero badge fades in from top with hover scale
+- Heading and subheading with staggered animations
+- CTA buttons with spring physics
+- Video banner scales in smoothly
+- Code blocks slide in from left/right on scroll
+- Course cards have staggered entrance and lift on hover
+
+**Navigation & Footer:**
+- Navbar slides down on page load
+- Logo scales on hover
+- Dropdown chevron rotates
+- Footer sections fade in on scroll
+- Social icons scale and rotate on hover
+
+**Responsive Testing:**
+- Test breakpoints: 320px (mobile), 768px (tablet), 1920px (desktop)
+- Verify text sizes, button layouts, and grid adjustments
+- Check touch interactions on mobile devices
+
+### Performance Checks:
+- Open DevTools → Performance tab
+- Record while scrolling/interacting
+- Verify 60fps smooth animations
+- Check for layout shifts or jank
+
+### Browser Compatibility:
+✅ Chrome | ✅ Firefox | ✅ Safari | ✅ Edge | ✅ Mobile browsers
 
 ## 🤝 Contributing
 

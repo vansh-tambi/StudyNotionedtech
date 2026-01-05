@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Link, matchPath } from 'react-router-dom'
+import {motion} from 'framer-motion'
 
 import { NavbarLinks } from "../../data/navbar-links"
 import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
@@ -51,7 +52,10 @@ const Navbar = () => {
     }
 
   return (
-    <div 
+    <motion.div 
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
         className={`flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700 ${
         location.pathname !== "/" ? "bg-richblack-800" : ""
         } transition-all duration-200`}
@@ -59,7 +63,14 @@ const Navbar = () => {
       <div className='flex w-11/12 max-w-maxContent items-center justify-between'>
         {/* logo */}
       <Link to="/">
-        <img src={logo} width={160} height={42} loading='lazy'/>
+        <motion.img 
+          whileHover={{ scale: 1.05 }}
+          src={logo} 
+          width={160} 
+          height={42} 
+          loading='lazy'
+          className='w-[120px] sm:w-[160px]'
+        />
       </Link>
 
       {/* Nav Links */}
@@ -71,13 +82,20 @@ const Navbar = () => {
                     {
                         link.title === "Catalog" ? (
                             <>
-                                <div 
+                                <motion.div 
+                                    whileHover={{ scale: 1.05 }}
                                     className={`group relative flex cursor-pointer items-center gap-1 
                                     ${ matchRoute("/catalog/:catalogName") ? "text-yellow-25"
                                     : "text-richblack-25"}`}
                                 >
                                     <p>{link.title}</p>
-                                    <BsChevronDown />
+                                    <motion.div
+                                      animate={{ rotate: 0 }}
+                                      whileHover={{ rotate: 180 }}
+                                      transition={{ duration: 0.3 }}
+                                    >
+                                      <BsChevronDown />
+                                    </motion.div>
 
                                     <div className='invisible absolute left-[50%] translate-x-[-50%]
                                         translate-y-[3em] top-[50%] z-[1000] w-[200px]
@@ -118,7 +136,7 @@ const Navbar = () => {
                                     </div>
 
 
-                                </div>
+                                </motion.div>
                             </>
                         ) : (
                             <Link to={link?.path}>
@@ -182,7 +200,7 @@ const Navbar = () => {
             <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
         </button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
